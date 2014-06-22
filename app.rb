@@ -12,7 +12,7 @@ get '/' do
   board = []
 
   cards = ['apple', 'orange', 'banana', 'airplane', 'dog', 'cat', 'car',
-           'house', 'tree', 'firetruck', 'lion', 'truck', 'elephant']
+           'house', 'tree', 'firetruck', 'lion', 'elephant']
 
   cards.cycle(2) { |x| board.push(x) }
 
