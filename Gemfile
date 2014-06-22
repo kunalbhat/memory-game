@@ -6,6 +6,7 @@ gem 'puma'
 
 group :web do
   gem 'haml'
+  gem 'rack-coffee'
   gem 'sinatra'
   gem 'sass'
 end

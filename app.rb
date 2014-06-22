@@ -1,6 +1,8 @@
 Bundler.require :web
 Bundler.require :development if development?
 
+use Rack::Coffee, root: 'assets', urls: '/javascripts'
+
 get '/style.css' do
   scss :style
 end
@@ -10,7 +12,7 @@ get '/' do
   board = []
 
   cards = ['apple', 'orange', 'banana', 'airplane', 'dog', 'cat', 'car',
-           'house', 'tree', 'firetruck']
+           'house', 'tree', 'firetruck', 'lion', 'truck', 'elephant']
 
   cards.cycle(2) { |x| board.push(x) }
 
