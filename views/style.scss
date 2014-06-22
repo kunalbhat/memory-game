@@ -16,5 +16,28 @@ html, body {
   height: 200px;
   list-style-type: none;
   margin: 0;
+  overflow: hidden;
+  position: relative;
   width: 20%;
+
+  &:after {
+    background: black;
+    border: 1px solid white;
+    bottom: 0;
+    content: "";
+    height: 200px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+
+    -webkit-transition: top 0.3s ease-in-out;
+  }
+
+  &.active, &.matched {
+    &:after {
+      top: 200px;
+    }
+  }
 }

@@ -12,7 +12,10 @@
 
     :javascript
 
-      var pair  = [];
+      var pair    = [];
+      var matched = [];
+
+      var timer;
 
       var cardCount = function() {
 
@@ -21,11 +24,28 @@
         }
       }
 
+      var resetCards = function() {
+        $('.card').removeClass('active');
+      }
+
+      var resetTimer = function() {
+        timer = window.setTimeout(resetCards, 2000);
+      }
+
       var isPair = function() {
+
+        $card = $(".card[data-name='" + card1 + "']");
+
         if ( card1 === card2 ) {
-          console.log('match!');
+
+          $card.addClass('matched');
+
+          // Keep track of matches
+          matched.push(card1);
         } else {
-          console.log('no match!');
+          $card.removeClass('active');
+
+          resetTimer();
         }
 
         pair = [];
@@ -33,16 +53,33 @@
 
       $('.card').on('click', function(event) {
 
-        cardCount();
+        $this = $(this);
 
-        card = $(this).data('name');
+        if ( $this.hasClass('active') ) {
+          return false;
+        } else {
+          $('.card').removeClass('active');
 
-        pair.push(card);
+          card  = $this.data('name');
 
-        if ( cardCount() == true ) {
-          card1 = pair[0];
-          card2 = pair[1];
+          $this.addClass('active');
 
-          isPair(card1, card2);
+          if ( matched.indexOf(card) > -1 ) {
+
+            // Don't do anything if already matched
+            return false;
+          } else {
+
+            cardCount();
+
+            pair.push(card);
+
+            if ( cardCount() == true ) {
+              card1 = pair[0];
+              card2 = pair[1];
+
+              isPair(card1, card2);
+            }
+          }
         }
       });
