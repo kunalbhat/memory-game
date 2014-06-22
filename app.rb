@@ -6,6 +6,16 @@ get '/style.css' do
 end
 
 get '/' do
+
+  board = []
+
+  cards = ['apple', 'orange', 'banana', 'airplane', 'dog', 'cat', 'car',
+           'house', 'tree', 'firetruck']
+
+  cards.cycle(2) { |x| board.push(x) }
+
+  @board = board.shuffle
+
   haml :index
 end
 

@@ -5,6 +5,44 @@
     %meta{ charset: 'utf-8' }
 
     %link{ href: '/style.css', rel: 'stylesheet' }
+    %script{ src: 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' }
 
   %body
     = yield
+
+    :javascript
+
+      var pair  = [];
+
+      var cardCount = function() {
+
+        if ( pair.length == 2 ) {
+          return true;
+        }
+      }
+
+      var isPair = function() {
+        if ( card1 === card2 ) {
+          console.log('match!');
+        } else {
+          console.log('no match!');
+        }
+
+        pair = [];
+      }
+
+      $('.card').on('click', function(event) {
+
+        cardCount();
+
+        card = $(this).data('name');
+
+        pair.push(card);
+
+        if ( cardCount() == true ) {
+          card1 = pair[0];
+          card2 = pair[1];
+
+          isPair(card1, card2);
+        }
+      });
