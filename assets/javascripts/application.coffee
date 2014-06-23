@@ -3,7 +3,13 @@ matched = []
 
 cards = $('.board .card').length / 2
 
-timer = 0
+clicks = 0
+timer  = 0
+
+updateClicks = () ->
+  clicks++
+
+  $('.clicks').text(clicks)
 
 cardCount = () ->
   true if pair.length == 2
@@ -36,6 +42,8 @@ isPair = (card1, card2) ->
   pair = []
 
 $('.card').on 'click', (event) ->
+
+  updateClicks()
 
   $this = $(this)
 

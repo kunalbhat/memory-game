@@ -14,6 +14,7 @@ html, body {
   $card_height: 130px;
 
   background: #efefef;
+  cursor: pointer;
   display: block;
   float: left;
   font-size: 24px;
@@ -28,6 +29,9 @@ html, body {
   width: 20%;
 
   -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
 
   &:after {
     background: black;
@@ -42,13 +46,27 @@ html, body {
     width: 100%;
 
     -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+            box-sizing: border-box;
 
     -webkit-transition: top 0.3s ease-in-out;
+       -moz-transition: top 0.3s ease-in-out;
+        -ms-transition: top 0.3s ease-in-out;
+            transition: top 0.3s ease-in-out;
   }
 
   &.active, &.matched {
-    &:after {
-      top: 200px;
-    }
+    &:after { top: 200px; }
   }
+}
+
+.scorecard {
+  background: black;
+  bottom: 0;
+  color: #fff;
+  height: 100px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
 }
