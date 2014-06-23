@@ -21,7 +21,7 @@ resetTimer = () ->
   timer = window.setTimeout(resetCards, 2000)
 
 allMatchesMade = () ->
-  alert('Good job you won') if matched.length == cards
+  alert('Good job you won in ' + clicks + ' moves') if matched.length == cards
 
 isPair = (card1, card2) ->
   $card = $(".card[data-name='" + card1 + "']")
